@@ -29,14 +29,7 @@ def create_table(q):
         print("Error creating table:", e)
     finally:
         cur.close()
-create_quary="""
-CREATE TABLE IF NOT EXISTS products (
-    product_id SERIAL PRIMARY KEY,
-    name TEXT UNIQUE NOT NULL,
-    price NUMERIC(6, 2) NOT NULL,
-    in_stock BOOLEAN DEFAULT TRUE
-        );
-    """
+
 
 def insert_info(q,data):
     global cur, e
@@ -50,10 +43,20 @@ def insert_info(q,data):
         print("Insert error:", e)
     finally:
         cur.close()
+create_quary="""
+CREATE TABLE IF NOT EXISTS products (
+    product_id SERIAL PRIMARY KEY,
+    name TEXT UNIQUE NOT NULL,
+    price NUMERIC(6, 2) NOT NULL,
+    in_stock BOOLEAN DEFAULT TRUE
+        );
+    """
+
 products_table_info = (('Laptop', 3200.50, True),
                       ('Mouse', 99.99, True),
                       ('Keyboard', 250.00, False),
                       ('Monitor', 1190.95, True))
+
 insert_quary=            """
         INSERT INTO products (name, price, in_stock)
         VALUES (%s, %s, %s)
