@@ -227,8 +227,8 @@ LANGUAGE plpgsql AS
 $$
 BEGIN
 	RETURN QUERY
-	SELECT MIN(b.publish_date) AS youngest_book,
-		   MAX(b.publish_date) AS oldest_book,
+	SELECT MAX(b.publish_date) AS youngest_book,
+		   MIN(b.publish_date) AS oldest_book,
 		   AVG(b.price) AS avg_price,
 	   	   COUNT(*) AS total_books 
 	   	   FROM books b;
